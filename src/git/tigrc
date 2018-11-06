@@ -1,0 +1,31 @@
+#set show-author = full #abbreviated   # Show abbreviated author names.
+#set show-date = relative
+#set show-rev-graph = yes        # Show revision graph?
+#set show-refs = yes             # Show references?
+#set commit-order = topo         # Order commits topologically
+#set read-git-colors = no        # Do not read Git's color settings.
+#set show-line-numbers = no      # Show line numbers?
+#set line-number-interval = 5    # Interval between line numbers
+#set horizontal-scroll = 33%     # Scroll 33% of the view width
+#set blame-options = -C -C -C    # Blame lines from other files
+
+# A few keybindings
+#bind main w scroll-line-up
+#bind main s scroll-line-down
+#bind main space enter
+#bind diff a previous
+#bind diff d next
+#bind diff b move-first-line
+
+# An external command to update from upstream
+bind generic P !git push
+bind generic O !git push origin master
+bind generic F !git push --force
+bind generic B !git browse
+bind generic G !git push origin HEAD:refs/for/master
+bind generic L !git pull
+bind generic C !git ci
+bind generic A !git ci --amend
+
+#set mouse = true
+bind generic E !git format-patch -1 %(commit)

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cd..="cd .."
+alias cdh="cd /mnt/c/Users/fabien"
+alias cdp="cd /mnt/c/Users/fabien/Projects"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+alias :q="exit"
+alias c="clear"
+alias ch="history -c && > ~/.bash_history"
+alias g="git"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ll="ls -al"
+alias l="ls -lh"
+alias map="xargs -n1"
+alias path='printf "%b\n" "${PATH//:/\\n}"'
+alias q="exit"
+alias rm="rm -rf --"
+alias t="tmux"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+alias dep="php ./vendor/bin/dep"
