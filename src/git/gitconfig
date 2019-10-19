@@ -1,240 +1,151 @@
 [alias]
 
-    a   = commit --amend
-    br  = branch
-    c   = commit
-    ca  = !git add -A && git commit             # Commit all changes.
-    d   = diff
-    dc  = diff --cached
-    f   = fetch
-    g   = log --graph --pretty=custom           # Show custom graph.
-    git = !exec git                             # Allow `$ git git git...`
-    l   = log --pretty=custom                   # Show custom log.
-    lc  = shortlog --email --numbered --summary # List contributors.
-    p   = push
-    r   = rebase
-    s   = status
-    w   = instaweb --httpd=webrick              # Start web-based visualizer.
+  a   = commit --amend
+  br  = branch
+  c   = commit
+  ca  = !git add -A && git commit       # Commit all changes.
+  d   = diff
+  dc  = diff --cached
+  f   = fetch
+  g   = log --graph --pretty=custom       # Show custom graph.
+  git = !exec git               # Allow `$ git git git...`
+  l   = log --pretty=custom           # Show custom log.
+  lc  = shortlog --email --numbered --summary # List contributors.
+  p   = push
+  r   = rebase
+  s   = status
+  w   = instaweb --httpd=webrick        # Start web-based visualizer.
+
+  co = checkout
+  ci = commit --verbose
+  cia = commit --amend
+  st = status
+  br = branch
+
+  # BRANCH
+  track = for-each-ref --format='%(refname:short)   <---   %(upstream:short)' refs/heads
+  tr = for-each-ref --format='%(refname:short)   <---   %(upstream:short)' refs/heads
+
+  # DIFF
+  df = diff
+  dfc = diff --cached
+
+  # MISC
+  type = cat-file -t
+  dump = cat-file -p
 
 
-  	co = checkout
-  	ci = commit --verbose
-  	cia = commit --amend
-  	st = status
-  	br = branch
+  # With rebase. Possible option --no-rebase
+  pl = pull --rebase
 
-  	# BRANCH
-  	track = for-each-ref --format='%(refname:short)     <---   %(upstream:short)' refs/heads
-  	tr = for-each-ref --format='%(refname:short)     <---   %(upstream:short)' refs/heads
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  	# DIFF
-  	df = diff
-  	dfc = diff --cached
+  # Find commits by source code.
 
-  	# SHOW
-  	dfile =  show --pretty="format:" --name-only
-  	dfiles =  show --name-only
+  cc = "!f() { \
+    git log --pretty=custom --decorate --date=short -S\"$1\"; \
+  }; f"
 
-  	# LOG
-  	l1 = log --max-count=1 --stat
-  	l2 = log --max-count=2 --stat
-  	l3 = log --max-count=3 --stat
-  	l4 = log --max-count=4 --stat
-  	l5 = log --max-count=5 --stat
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  	hs = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=20
-  	history = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  	pa = !git --no-pager log origin/master..HEAD
-  	dl = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit  master..origin/master
-  	dlp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p  master..origin/master
+  # Find commits by commit message.
 
-  	# MISC
-  	type = cat-file -t
-  	dump = cat-file -p
+  cm = "!f() { \
+    git log --pretty=custom --decorate --date=short --grep=\"$1\"; \
+  }; f"
 
-  	# Gerrit alias of "git push origin HEAD:refs/for/master" - http://stackoverflow.com/questions/7423893/git-alias-for-headrefs-for-master
-  	#review = "!f() { git push -u ${1:-origin} HEAD:`git config branch.$(git name-rev --name-only HEAD).merge | sed -e 's@refs/heads/@refs/for/@'`; }; f"
-  	review = push origin HEAD:refs/for/master
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  	# With rebase. Possible option --no-rebase
-  	pl = pull --rebase
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Find commits by source code.
-
-    cc = "!f() { \
-        git log --pretty=custom --decorate --date=short -S\"$1\"; \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Find commits by commit message.
-
-    cm = "!f() { \
-        git log --pretty=custom --decorate --date=short --grep=\"$1\"; \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Credit an author on the latest commit.
-
-    credit = "!f() { \
-        if [ -n \"$1\" ] && [ -n \"$2\" ]; then \
-            git commit --amend --author \"$1 <$2>\" -C HEAD; \
-        fi \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # List remote branches.
-
-    lrb = "!f() { \
-        remote="${1:-origin}"; \
-        git ls-remote --heads "$remote"; \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Merge GitHub pull request on top of the current branch or,
-    # if a branch name is specified, on top of the specified branch.
-
-    mpr = "!f() { \
-        declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-        declare branch=\"${2:-$currentBranch}\"; \
-        if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-            git fetch origin refs/pull/$1/head:pr/$1 && \
-            git checkout -B $branch && \
-            git rebase $branch pr/$1 && \
-            git checkout -B $branch && \
-            git merge pr/$1 && \
-            git branch -D pr/$1 && \
-            git commit --amend -m \"$(git log -1 --pretty=%B)\n\nClose #$1\"; \
-        fi \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Remove the tag with the specified tag name if
-    # exists and tag the latest commit with that name.
-
-    retag = "!f() { \
-        git tag -d "$1" &> /dev/null; \
-        git tag $1; \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Remove last commits (by default it removes the last commit).
-
-    rlc = "!f() { \
-        declare n=\"${1:-1}\"; \
-        git reset --hard \"HEAD~$n\"; \
-    }; f"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Undo last commits (by default it undoes the last commit).
-
-    ulc = "!f() { \
-        declare n=\"${1:-1}\"; \
-        git reset --soft \"HEAD~$n\"; \
-    }; f"
 
 [color]
-	ui = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 
 [color "branch"]
 
-    current = green bold
-    local = green
-    remote = yellow
+  current = green bold
+  local = green
+  remote = yellow
 
 [color "diff"]
 
-    frag = magenta
-    meta = yellow
+  frag = magenta
+  meta = yellow
 
-    new = green
-    old = red
+  new = green
+  old = red
 
-    newMoved = cyan
-    oldMoved = blue
+  newMoved = cyan
+  oldMoved = blue
 
 [core]
 
-    abbrev = 12
-    attributesfile = ~/.gitattributes
-    autocrlf = input
-    excludesfile = ~/.gitignore
+  abbrev = 12
+  attributesfile = ~/.gitattributes
+  autocrlf = input
+  excludesfile = ~/.gitignore
 
-    #autocrlf = input
-  	safecrlf = true
-  	filemode = false
+  #autocrlf = input
+  safecrlf = true
+  filemode = false
 
 [diff]
 
-    # Show blocks of moved text of at least 20
-    # alphanumeric characters differently than adds/deletes.
-    #
-    # https://git-scm.com/docs/git-diff#git-diff-zebra
+  # Show blocks of moved text of at least 20
+  # alphanumeric characters differently than adds/deletes.
+  #
+  # https://git-scm.com/docs/git-diff#git-diff-zebra
 
-    colorMoved = zebra
+  colorMoved = zebra
 
 [diff "bin"]
 
-    # Use `hexdump` to diff binary files.
+  # Use `hexdump` to diff binary files.
 
-    textconv = hexdump -v -C
+  textconv = hexdump -v -C
 
 [pretty]
 
-    custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
-    #                     │        │            │            │             └─ author name
-    #                     │        │            │            └─ message
-    #                     │        │            └─ date (relative)
-    #                     │        └─ decorations (branch, heads or tags)
-    #                     └─ hash (abbreviated)
-
+  custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+  #           │    │      │      │       └─ author name
+  #           │    │      │      └─ message
+  #           │    │      └─ date (relative)
+  #           │    └─ decorations (branch, heads or tags)
+  #           └─ hash (abbreviated)
 
 [push]
 
-    # Make `git push` automatically push relevant
-    # annotated tags when pushing branches out.
+  # Make `git push` automatically push relevant
+  # annotated tags when pushing branches out.
 
-    followTags = true
+  followTags = true
 
 [user]
 
-    # Don't guess the user's identity.
-    # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
+  # Don't guess the user's identity.
+  # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
 
-    useConfigOnly = true
+  useConfigOnly = true
 
 [include]
 
-    # Load local configs.
-    # https://git-scm.com/docs/git-config#_includes
-    #
-    # [!] The following needs to remain at the end of this file in
-    #     order to allow any of the above configs to be overwritten
-    #     by the local ones
+  # Load local configs.
+  # https://git-scm.com/docs/git-config#_includes
+  #
+  # [!] The following needs to remain at the end of this file in
+  #   order to allow any of the above configs to be overwritten
+  #   by the local ones
 
-    path = ~/.gitconfig.local
-
-[url "ssh://fab1en@review.typo3.org:29418"]
-    pushInsteadOf = git://git.typo3.org
+  path = ~/.gitconfig.local
 
 [mergetool]
-	keepBackup = true
+  keepBackup = true
 [branch "master"]
-	rebase = true
+  rebase = true
 [rebase]
-	stat = true
-# [push]
-# 	default = simple
+  stat = true
+[push]
+  default = simple
