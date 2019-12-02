@@ -25,24 +25,18 @@ The setup process will:
 * Create some additional [directories](src/os/create_directories.sh)
 * [Symlink](src/os/create_symbolic_links.sh) the
   [`git`](src/git),
-  [`shell`](src/shell), and
-* Install applications / command-line tools for
-  [`Ubuntu`](src/os/install/ubuntu)
-* Set custom
-  [`Ubuntu`](src/os/preferences/ubuntu) preferences
+  [`shell`](src/shell), etc..-
 
-Setup process in action:
+## Nitpicking of some configuration files
 
+Sometimes it is handy to only pick some configuration files. It can be achieved with `curl` as follows:
+
+```
+curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/git/gitconfig > ~/.gitconfig
+curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/shell/aliases/bash_aliases >> ~/.bash_aliases
+```
 
 ## Next step
-
-* import ssh keys
-
-```
-    cd my/ssh
-    mv ssh ~/.ssh
-    chmod 600 ~/.ssh/*
-```
 
 * adjust .gitconfig.local by adding
 
@@ -51,17 +45,6 @@ Setup process in action:
 	name = Fabien Udriot
 	email = fabien@omic.ch
 	date = YYYY
-
-[commit]
-	gpgsign = true
-```
-
-* Import gpg keys
-
-```
-    cd my/keys
-    gpg --import my-secret-keyring.gpg
-    gpg --import-options import-local-sigs my-public-keyring.gpg
 ```
 
 ## Customize
@@ -83,33 +66,12 @@ Here is a very simple example of a `~/.bash.local` file:
 ```bash
 #!/bin/bash
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Set local aliases.
-
-alias starwars="telnet towel.blinkenlights.nl"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # Set PATH additions.
 
 PATH="$PATH:$HOME/projects/dotfiles/src/bin"
 
 export PATH
-
 ```
-
-### Forks
-
-If you decide to fork this project, don't forget to substitute my
-username with your own in the [`setup` snippets](#setup) and [in the
-`setup` script](https://github.com/fabarea/dotfiles/blob/1503cf23ef23f6e31342b140bcd246625160b94f/src/os/setup.sh#L3).
-
-## Update
-
-To update the dotfiles you can either run the [`setup`
-script](src/os/setup.sh) or, if you want to just update one particular
-part, run the appropriate [`os` script](src/os).
 
 ## Acknowledgements
 
