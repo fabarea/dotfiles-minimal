@@ -5,9 +5,9 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Make `mcedit` the default editor.
+# Make `nano` the default editor.
 
-export EDITOR="mcedit"
+export EDITOR="nano"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
