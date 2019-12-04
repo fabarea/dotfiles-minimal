@@ -228,14 +228,6 @@ main() {
 
     ./create_local_config_files.sh
 
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    ./install/main.sh
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
     if cmd_exists "git"; then
 
         if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
