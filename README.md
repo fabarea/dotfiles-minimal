@@ -1,22 +1,15 @@
 # [Fabien](https://github.com/fabarea)’s dotfiles
 
-These are the base dotfiles that I start with when I set up a
-new environment. For more specific local needs I use the `.local`
-files described in the [`Local Settings`](#local-settings) section.
+These are the basic dotfiles that I am using to start a "minimal" configuration
+on a remote server. Some configuration can be overwriten in `.local` files.
 
 ## Setup
 
-To set up the `dotfiles` just run the appropriate snippet in the
-terminal:
+To set up the `dotfiles` just run in the terminal
 
-(:warning: **DO NOT** run the `setup` snippet if you don't fully
-understand [what it does](src/os/setup.sh). Seriously, **DON'T**!)
-
-| OS | Snippet |
-|:---|:---|
-| `Ubuntu` | `bash -c "$(wget -qO - https://raw.github.com/fabarea/dotfiles-minimal/master/src/os/setup.sh)"` |
-
-That's it! :sparkles:
+```sh
+bash -c "$(wget -qO - https://raw.github.com/fabarea/dotfiles-minimal/master/src/os/setup.sh)"
+```
 
 The setup process will:
 
