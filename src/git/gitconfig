@@ -33,7 +33,11 @@
   # MISC
   type = cat-file -t
   dump = cat-file -p
-
+  
+  # Log
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  hs = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=20
+  history = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
   # With rebase. Possible option --no-rebase
   pl = pull --rebase
