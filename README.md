@@ -38,12 +38,12 @@ curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/shell
 
 ## Next step
 
-* adjust .gitconfig.local by adding
+* `nano ~/.gitconfig.local` adjust the content
 
 ```
 [user]
 	name = Fabien Udriot
-	email = fabien@omic.ch
+	email = fabidule@omic.ch
 	date = YYYY
 ```
 
