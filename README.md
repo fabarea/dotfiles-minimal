@@ -20,13 +20,19 @@ The setup process will:
   [`git`](src/git),
   [`shell`](src/shell), etc..-
 
-## Nitpicking of some configuration files
+## Cherry picking of some configuration files
 
 Sometimes it is handy to only pick some configuration files. It can be achieved with `curl` as follows:
 
 ```
+# Git configuration
 curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/git/gitconfig > ~/.gitconfig
+
+# Bash aliases
 curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/shell/aliases/bash_aliases >> ~/.bash_aliases
+
+# Editor config
+curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/.editorconfig > .editorconfig
 ```
 
 ## Next step
