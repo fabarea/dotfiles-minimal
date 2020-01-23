@@ -7,14 +7,8 @@ alias cd..="cd .."
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-alias :q="exit"
 alias c="clear"
-alias ch="history -c && > ~/.bash_history"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ll="ls -al"
 alias l="ls -lh"
-alias map="xargs -n1"
-alias path='printf "%b\n" "${PATH//:/\\n}"'
-alias q="exit"
-alias rm="rm -rf --"
 alias t="tmux"
