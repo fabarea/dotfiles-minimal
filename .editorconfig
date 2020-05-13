@@ -1,27 +1,30 @@
 # http://editorconfig.org
-
 root = true
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 [*]
-
-charset = utf-8
-indent_size = 4
 indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
 insert_final_newline = true
-trim_trailing_whitespace = true
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+[*.php]
+ij_php_space_before_closure_left_parenthesis = false
 
-[*.md]
+[*.{json,yml,txt,md,sql}]
+indent_size = 2
 
-# Markdown uses the trailing whitespaces.
-# https://daringfireball.net/projects/markdown/syntax#block
-
-trim_trailing_whitespace = true
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+[*.{xml,xlf,xsd}]
+indent_size = 2
 
 [Makefile]
 indent_style = tab
+
+[htdocs/typo3conf/ext/speciality/Resources/Public/JavaScript/*.js]
+ij_any_array_initializer_new_line_after_left_brace = false
+ij_javascript_force_semicolon_style = true
+ij_javascript_use_semicolon_after_statement = false
+ij_javascript_space_before_function_left_parenth = false
+ij_javascript_force_quote_style = true
+ij_javascript_use_double_quotes = false
