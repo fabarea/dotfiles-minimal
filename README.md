@@ -28,6 +28,9 @@ Sometimes it is handy to only pick some configuration files. It can be achieved 
 # Git configuration
 curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/git/gitconfig > ~/.gitconfig
 
+# Tig configuration
+curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/git/tigrc > ~/.tigrc
+
 # Bash aliases
 curl https://raw.githubusercontent.com/fabarea/dotfiles-minimal/master/src/shell/aliases/bash_aliases >> ~/.bash_aliases
 
