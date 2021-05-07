@@ -15,6 +15,9 @@
   # DIFF
   df = diff
   dfc = diff --cached
+  
+  # Fixup
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 
   # MISC
   type = cat-file -t
