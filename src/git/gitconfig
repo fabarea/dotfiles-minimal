@@ -18,18 +18,11 @@
   
   # Fixup
   fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
-
-  # MISC
-  type = cat-file -t
-  dump = cat-file -p
   
   # Log
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   hs = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=20
   history = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
-  # With rebase. Possible option --no-rebase
-  pl = pull --rebase
 
 [color]
   ui = auto
@@ -112,9 +105,13 @@
 
 [mergetool]
   keepBackup = true
+  
 [branch "master"]
   rebase = true
+  
 [rebase]
   stat = true
+  autosquash = true
+  
 [push]
   default = simple
