@@ -19,6 +19,9 @@
   # Fixup
   fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
   
+  # https://github.com/skypesky/to-where-cli
+  open = "!tw git open"
+
   # Log
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   hs = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=20
