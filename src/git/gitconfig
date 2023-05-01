@@ -1,9 +1,10 @@
 [alias]
 
   br  = branch
+  p  = cherry-pick
+  pick  = cherry-pick
   ca  = !git add -A && git commit       # Commit all changes.
   dc  = diff --cached
-  git = !exec git               # Allow `$ git git git...`
   lc  = shortlog --email --numbered --summary # List contributors.
 
   co = checkout
