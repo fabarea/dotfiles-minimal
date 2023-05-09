@@ -118,6 +118,10 @@
 [rebase]
   stat = true
   autosquash = true
-  
+
+[pull]
+  rebase = true
+  autoStash = true
+    
 [push]
   default = simple
